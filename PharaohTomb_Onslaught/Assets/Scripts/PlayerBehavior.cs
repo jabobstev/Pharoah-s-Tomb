@@ -3,20 +3,25 @@ using System.Collections;
 
 public class PlayerBehavior : MonoBehaviour {
 
+    Animator animator;
     public int health;
     float vHorizontal, vVertical, mSpeed, orbitDistance, orbitDegreesPerSec;
     public GameObject tower;
+    public bool playerShot;
 
     void Start () {
+        animator = GetComponent<Animator>();
         health = 50;
         mSpeed = 0.5f;
         orbitDistance = 2.0f;
         orbitDegreesPerSec = 200.0f;
+        playerShot = false;
     }
 	
 	void Update () {
         Move();
-        //Orbit();
+        Shoot();
+        UpdateAnimations();
     }
 
     void Move()
@@ -30,13 +35,17 @@ public class PlayerBehavior : MonoBehaviour {
         }
     }
 
-    void Orbit()
+    void Shoot()
     {
-        if (tower != null)
+        if (Input.GetButtonDown("Fire1"))
         {
-            // Keep us at orbitDistance from target
-            transform.position = tower.transform.position + (transform.position - tower.transform.position).normalized * orbitDistance;
-            transform.RotateAround(tower.transform.position, Vector3.up, orbitDegreesPerSec * Time.deltaTime);
+            print("FIRE!");
+            playerShot = true;
         }
+    }
+
+    void UpdateAnimations()
+    {
+        animator.SetBool("playerShot", playerShot);
     }
 }
