@@ -8,6 +8,7 @@ public class PlayerBehavior : MonoBehaviour {
     float vHorizontal, vVertical, mSpeed, orbitDistance, orbitDegreesPerSec;
     public GameObject tower;
     public bool playerShot;
+    public WeaponBehavior weapon;
 
     void Start () {
         animator = GetComponent<Animator>();
@@ -40,6 +41,7 @@ public class PlayerBehavior : MonoBehaviour {
         if (Input.GetButtonDown("Fire1"))
         {
             print("FIRE!");
+            weapon.Fire();
             playerShot = true;
         }
     }
