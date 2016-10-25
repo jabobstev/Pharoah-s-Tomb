@@ -39,16 +39,11 @@ public class MummyBehavior : MonoBehaviour {
         //update the isDead that the animator will have in order to launch a death sequence
     }
 
-    void OnCollisionEnter(Collision col)
+    public void TakeDamage(int dmg)
     {
-        //TODO
-        if (col.gameObject.name == "bullet?")
-        {
-            health--;
-            if(health <= 0)
-            {
-                isDead = true;
-            }
-        }
+        health = health - dmg;
+        if (health <= 0)
+            Destroy(gameObject);
     }
+
 }
