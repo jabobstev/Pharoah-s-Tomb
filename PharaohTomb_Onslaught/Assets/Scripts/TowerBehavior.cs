@@ -18,14 +18,21 @@ public class TowerBehavior : MonoBehaviour {
         BuildCharge();
 	}
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         //TODO
-        if (col.gameObject.name == "mummy?")
+        if (col.gameObject.tag == "Mummy")
         {
-            //take damage
+			TakeDamage (3);
+			Debug.Log (health);
         }
     }
+
+	void TakeDamage(int damage){
+		health -= damage;
+		if (health < 0)
+			Destroy (this.gameObject);
+	}
 
     void BuildCharge()
     {

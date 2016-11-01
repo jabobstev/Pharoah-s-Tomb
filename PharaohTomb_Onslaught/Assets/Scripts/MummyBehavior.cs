@@ -3,6 +3,11 @@ using System.Collections;
 
 public class MummyBehavior : MonoBehaviour {
 
+	public float moveSpeed = 1.0f;
+
+	Vector3 towerPosition;
+	Vector3 walkDirection;
+
     Animator animator;
     public int health;
     bool isDead;
@@ -10,6 +15,13 @@ public class MummyBehavior : MonoBehaviour {
 	void Start () {
         animator = GetComponent<Animator>();
         health = 3;
+
+		//Find the tower and remember its location
+		towerPosition = GameObject.FindGameObjectWithTag ("Tower").transform.position;
+
+		walkDirection = towerPosition - transform.position;
+		//Flatten it in 2D (xz plane)
+		walkDirection = new Vector3(walkDirection.x, 0, walkDirection.z);
     }
 	
 	void Update () {
@@ -22,8 +34,11 @@ public class MummyBehavior : MonoBehaviour {
 
     void Move()
     {
-        //TODO
         //Move mummy towards tower in center if they are not within range of attacking
+
+		//Move mummy relative to world axis
+		transform.Translate(Time.deltaTime * moveSpeed * walkDirection, Space.World);
+
     }
 
     void Attack()
@@ -32,6 +47,11 @@ public class MummyBehavior : MonoBehaviour {
         //if they are close enough to the player to attack, attack the player
         //if they are close enough to the tower to attack, attack the tower
     }
+
+	void OnTriggerEnter(Collider col){
+		if (col.gameObject.tag == "Tower")
+			Destroy (this.gameObject);
+	}
 
     void UpdateAnimations()
     {
