@@ -15,6 +15,11 @@ public class EnemySpawnerBehavior : MonoBehaviour {
 	void Update () {
 	
 	}
+    
+    public void Reset()
+    {
+        SpawnRate = 6f;
+    }
 
     void SpawnEnemy()
     {
