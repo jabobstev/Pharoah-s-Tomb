@@ -8,7 +8,7 @@ public class EnemySpawnerBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Invoke("SpawnEnemy", 4f);
+        Invoke("SpawnEnemy", 2f);
     }
 	
 	// Update is called once per frame
