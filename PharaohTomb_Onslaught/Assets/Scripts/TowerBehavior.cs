@@ -5,12 +5,14 @@ public class TowerBehavior : MonoBehaviour {
 
     public int health;
     public int charge;
+    public static bool isDead;//aka gameover flag
 
     // Use this for initialization
     void Start () {
         health = 100;
         charge = 0;
-	}
+        isDead = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -30,8 +32,11 @@ public class TowerBehavior : MonoBehaviour {
 
 	void TakeDamage(int damage){
 		health -= damage;
-		if (health < 0)
-			Destroy (this.gameObject);
+        if (health < 0)
+        {
+            isDead = true;
+            Destroy(this.gameObject);
+        }
 	}
 
     void BuildCharge()

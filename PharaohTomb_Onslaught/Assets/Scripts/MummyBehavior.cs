@@ -25,6 +25,8 @@ public class MummyBehavior : MonoBehaviour {
     }
 	
 	void Update () {
+        if (TowerBehavior.isDead)
+            return;
         UpdateAnimations();
         if (isDead)
             return;

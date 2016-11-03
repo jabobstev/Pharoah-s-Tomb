@@ -10,7 +10,6 @@ public class WeaponBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
     public void Fire()
@@ -28,25 +27,5 @@ public class WeaponBehavior : MonoBehaviour {
                 hit.collider.gameObject.GetComponent<MummyBehavior>().TakeDamage(1);
             }
         }
-
-
-
-        //if (Physics.Raycast(transform.position, fwd, 10))
-        //{
-        //    print("There is something in front of the object!");
-        //}
-
-
-        //var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //var hit : RaycastHit;
-        //if (Physics.Raycast(ray, hit, 100))
-        //{
-        //    if (hit.collider.gameObject.find("wormyguy"))
-        //    {
-        //        Debug.Log("Success");
-        //    }
-        //}
     }
-
-
 }

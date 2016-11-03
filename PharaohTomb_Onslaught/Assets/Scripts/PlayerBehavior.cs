@@ -20,6 +20,8 @@ public class PlayerBehavior : MonoBehaviour {
     }
 	
 	void Update () {
+        if (TowerBehavior.isDead)
+            return;
         Move();
         Shoot();
         UpdateAnimations();

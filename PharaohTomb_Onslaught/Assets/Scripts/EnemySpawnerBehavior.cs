@@ -18,6 +18,8 @@ public class EnemySpawnerBehavior : MonoBehaviour {
 
     void SpawnEnemy()
     {
+        if (TowerBehavior.isDead)
+            return;
         float EnemyY = -0.25f;
         float radius = 10f;
         float angle = Random.value * Mathf.PI * 2;
