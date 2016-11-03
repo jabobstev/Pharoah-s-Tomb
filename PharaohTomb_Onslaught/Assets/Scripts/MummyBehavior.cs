@@ -61,6 +61,7 @@ public class MummyBehavior : MonoBehaviour {
 
     public void TakeDamage(int dmg)
     {
+        FloatingTextController.CreateFloatingText((-dmg).ToString(), transform);
         health = health - dmg;
         if (health <= 0)
             Destroy(gameObject);
