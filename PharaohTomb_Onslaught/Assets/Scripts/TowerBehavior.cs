@@ -5,7 +5,7 @@ public class TowerBehavior : MonoBehaviour {
 
     public int health;
     public int charge;
-    public static bool isDead;//aka gameover flag
+    public static bool isDead; //aka gameover flag
 
     // Use this for initialization
     void Start () {
@@ -35,9 +35,13 @@ public class TowerBehavior : MonoBehaviour {
         if (health < 0)
         {
             isDead = true;
-            Destroy(this.gameObject);
         }
 	}
+
+    public void Reset()
+    {
+        Start();
+    }
 
     void BuildCharge()
     {
