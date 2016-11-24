@@ -42,7 +42,6 @@ public class PlayerBehavior : MonoBehaviour {
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            print("FIRE!");
             weapon.Fire();
             playerShot = true;
         }
