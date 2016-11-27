@@ -19,12 +19,18 @@ public class WeaponBehavior : MonoBehaviour {
         float range = 50.0f;
         RaycastHit hit;
         Ray ray = new Ray(transform.position, fwd);
+        Debug.DrawRay(transform.position, fwd, Color.green);
         if (Physics.Raycast(ray, out hit, range))
         {
+            int dmg = 1;
+            if (hit.collider.tag == "Tower")//shooting through the tower inscreases the damage
+            {
+                dmg *= 3;
+            }
             if (hit.collider.tag == "Mummy")
             {
                 print(hit.collider.gameObject.name);
-                hit.collider.gameObject.GetComponent<MummyBehavior>().TakeDamage(1);
+                hit.collider.gameObject.GetComponent<MummyBehavior>().TakeDamage(dmg);
             }
         }
     }
