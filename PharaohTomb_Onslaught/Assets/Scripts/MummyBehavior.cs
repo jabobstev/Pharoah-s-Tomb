@@ -11,6 +11,7 @@ public class MummyBehavior : MonoBehaviour {
     Animator animator;
     public int health;
     bool isDead;
+    float deadTime;
 
 	void Start () {
         animator = GetComponent<Animator>();
@@ -65,15 +66,25 @@ public class MummyBehavior : MonoBehaviour {
     void UpdateAnimations()
     {
         //TODO
-        //update the isDead that the animator will have in order to launch a death sequence
+        animator.SetBool("isDead", isDead);
+        if (isDead && Time.time - deadTime > 5.0f)
+            Destroy(gameObject);
     }
 
     public void TakeDamage(int dmg)
     {
+        if (isDead)
+            return;
         FloatingTextController.CreateFloatingText((-dmg).ToString(), transform);
         health = health - dmg;
         if (health <= 0)
-            Destroy(gameObject);
+        {
+            //Destroy(gameObject);
+            isDead = true;
+            deadTime = Time.time;
+            return;
+        }
+        animator.SetTrigger("isHit");
     }
 
 }
