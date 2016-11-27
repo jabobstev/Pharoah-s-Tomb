@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3b41a7caa69973342b4f08055055148e
-timeCreated: 1480264420
+timeCreated: 1480269426
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -19,6 +19,7 @@ TextureImporter:
     21300024: python
     21300026: shotgun
     21300028: typewriter
+    21300030: flashlight
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -257,6 +258,19 @@ TextureImporter:
         y: 608
         width: 96
         height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flashlight
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 747
+        width: 52
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
