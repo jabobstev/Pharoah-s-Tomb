@@ -19,6 +19,13 @@ public class MummyBehavior : MonoBehaviour {
 		//Find the tower and remember its location
 		towerPosition = GameObject.FindGameObjectWithTag ("Tower").transform.position;
 
+        //if tower is to the LEFT of their position, flip the sprite
+        if (transform.position.x > 0)//assumption that tower will always remain at (0,0)
+        {
+            SpriteRenderer SpriteRend = GetComponent<SpriteRenderer>();
+            SpriteRend.flipX = false;//since original mummy sprite is backwards
+        }
+
 		walkDirection = towerPosition - transform.position;
 		//Flatten it in 2D (xz plane)
 		walkDirection = new Vector3(walkDirection.x, 0, walkDirection.z);
