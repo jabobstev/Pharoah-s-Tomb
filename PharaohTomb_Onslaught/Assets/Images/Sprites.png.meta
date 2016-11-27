@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3b41a7caa69973342b4f08055055148e
-timeCreated: 1480271572
+timeCreated: 1480280871
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -20,6 +20,9 @@ TextureImporter:
     21300026: shotgun
     21300028: typewriter
     21300030: flashlight
+    21300032: Sprites_0
+    21300034: Sprites_1
+    21300036: Sprites_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -273,6 +276,45 @@ TextureImporter:
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 322
+        width: 1629
+        height: 88
+      alignment: 9
+      pivot: {x: 0.0000123901555, y: 0.43941185}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 241
+        width: 1624
+        height: 88
+      alignment: 9
+      pivot: {x: 0.00017887031, y: 0.4172138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 162
+        width: 1623
+        height: 88
+      alignment: 9
+      pivot: {x: 0.0004808305, y: 0.41128558}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
