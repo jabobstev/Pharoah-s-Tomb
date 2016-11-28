@@ -23,13 +23,16 @@ public class WeaponBehavior : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, range))
         {
             int dmg = 1;
-            if (hit.collider.tag == "Tower")//shooting through the tower inscreases the damage
+            if (hit.collider.name == "Tower")//shooting through the tower inscreases the damage
             {
+                print("Tower was shot through");
                 dmg *= 3;
+                ray = new Ray(new Vector3(0,0,0), fwd);//redraw ray from tower
+                Physics.Raycast(ray, out hit, range);
             }
-            if (hit.collider.tag == "Mummy")
+            if (hit.collider != null && hit.collider.tag == "Mummy")
             {
-                print(hit.collider.gameObject.name);
+                print("hit a Mummy");
                 hit.collider.gameObject.GetComponent<MummyBehavior>().TakeDamage(dmg);
             }
         }

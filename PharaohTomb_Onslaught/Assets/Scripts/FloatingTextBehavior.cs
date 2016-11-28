@@ -10,7 +10,7 @@ public class FloatingTextBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         AnimatorClipInfo[] clipInfo = animator.GetCurrentAnimatorClipInfo(0);
-        Debug.Log(animator.GetCurrentAnimatorClipInfo(0));
+        //Debug.Log(animator.GetCurrentAnimatorClipInfo(0));
         Destroy(gameObject, clipInfo[0].clip.length);
         damageText = animator.GetComponent<Text>();
 	}   

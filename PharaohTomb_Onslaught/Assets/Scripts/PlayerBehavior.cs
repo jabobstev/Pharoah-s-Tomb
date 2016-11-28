@@ -60,7 +60,7 @@ public class PlayerBehavior : MonoBehaviour {
             if (transform.rotation.z > ninety)//aiming to the right
             {
                 //This doesn't work for some reason, so screw it, Indy can fight upside down
-                print("THIS IS WHEN INDY SHOULD FLIP!");
+                //print("THIS IS WHEN INDY SHOULD FLIP!");
                 transform.rotation = Quaternion.Euler(transform.rotation.x + 180, transform.rotation.y + 90, transform.rotation.z + 90);
             }
         }

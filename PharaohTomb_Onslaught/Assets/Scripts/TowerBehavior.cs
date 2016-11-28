@@ -38,7 +38,7 @@ public class TowerBehavior : MonoBehaviour {
         if (col.gameObject.tag == "Mummy")
         {
 			TakeDamage (3);
-			Debug.Log (health);
+			//Debug.Log (health);
         }
     }
 
