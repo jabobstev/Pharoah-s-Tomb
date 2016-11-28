@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3b41a7caa69973342b4f08055055148e
-timeCreated: 1480280871
+timeCreated: 1480366732
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -23,6 +23,15 @@ TextureImporter:
     21300032: Sprites_0
     21300034: Sprites_1
     21300036: Sprites_2
+    21300038: sarc1
+    21300040: sarc2
+    21300042: sarc3
+    21300044: sarc4
+    21300046: sarc5
+    21300048: sarc6
+    21300050: sarc7
+    21300052: sarc8
+    21300054: sarc9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -315,6 +324,123 @@ TextureImporter:
         height: 88
       alignment: 9
       pivot: {x: 0.0004808305, y: 0.41128558}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sarc1
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 760
+        width: 103
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sarc2
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 757
+        width: 105
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sarc3
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 760
+        width: 103
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sarc4
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 763
+        width: 99
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sarc5
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 767
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sarc6
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 770
+        width: 91
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sarc7
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 763
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sarc8
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 764
+        width: 67
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sarc9
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 762
+        width: 40
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

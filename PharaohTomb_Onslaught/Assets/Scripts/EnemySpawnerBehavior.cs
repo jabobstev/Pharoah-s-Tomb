@@ -26,11 +26,14 @@ public class EnemySpawnerBehavior : MonoBehaviour {
         if (TowerBehavior.isDead)
             return;
         float EnemyY = -0.25f;
-        float radius = 10f;
+        float radius = 12f;
         float angle = Random.value * Mathf.PI * 2;
         Vector3 pos = new Vector3(Mathf.Cos(angle) * radius, EnemyY, Mathf.Sin(angle) * radius);
         GameObject enemy = (GameObject)Instantiate(Enemy);
         enemy.transform.position = pos;
+
+        float newSpeed = Random.Range(0.05f, 0.2f);
+        enemy.GetComponent<MummyBehavior>().setSpeed(newSpeed);
 
 
         if (SpawnRate - 0.5 >= 1)

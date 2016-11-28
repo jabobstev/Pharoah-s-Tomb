@@ -10,7 +10,7 @@ public class TowerBehavior : MonoBehaviour {
     public static bool isDead; //aka gameover flag
     public Light towerLight;
     const float MAX_LIGHT_INTENSITY = 7f;
-    const int MAX_CHARGE_POWER = 2;
+    const int MAX_CHARGE_POWER = 5;
     public bool isAtMaxCharge = false;
 
     float chargeUpdateTime;
@@ -57,7 +57,7 @@ public class TowerBehavior : MonoBehaviour {
 
     void BuildCharge()
     {
-        if ((Time.time - chargeUpdateTime) >= 2)
+        if ((Time.time - chargeUpdateTime) >= 4)
         {
             if (health < 98)
                 health += 2;

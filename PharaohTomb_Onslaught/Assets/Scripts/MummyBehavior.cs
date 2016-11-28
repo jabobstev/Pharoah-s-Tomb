@@ -9,13 +9,13 @@ public class MummyBehavior : MonoBehaviour {
 	Vector3 walkDirection;
 
     Animator animator;
-    public int health;
+    public float health;
     bool isDead;
     float deadTime;
 
 	void Start () {
         animator = GetComponent<Animator>();
-        health = 3;
+        health = 12;
 
 		//Find the tower and remember its location
 		towerPosition = GameObject.FindGameObjectWithTag ("Tower").transform.position;
@@ -71,7 +71,7 @@ public class MummyBehavior : MonoBehaviour {
             Destroy(gameObject);
     }
 
-    public void TakeDamage(int dmg)
+    public void TakeDamage(float dmg)
     {
         if (isDead)
             return;
@@ -85,6 +85,11 @@ public class MummyBehavior : MonoBehaviour {
             return;
         }
         animator.SetTrigger("isHit");
+    }
+
+    public void setSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
     }
 
 }
