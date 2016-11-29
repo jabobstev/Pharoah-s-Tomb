@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/PharaohTomb_Onslaught_Scene.unity
+- path: Assets/PharaohTomb_Onslaught_Menu.unity
   isLoaded: 1
   isActive: 1

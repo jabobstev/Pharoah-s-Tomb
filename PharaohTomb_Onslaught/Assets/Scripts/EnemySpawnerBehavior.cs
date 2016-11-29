@@ -12,12 +12,12 @@ public class EnemySpawnerBehavior : MonoBehaviour {
     public static float nextSarcSpawnDelay;
     float highSpawnRateTime;
     bool highSpawnRateActive;
-    float sign = 1f;
+    float sign = -1f;
 
 	// Use this for initialization
 	void Start () {
         SarcSpawnDelay = Time.time;
-        nextSarcSpawnDelay = Random.Range(3f, 4f);
+        nextSarcSpawnDelay = 39f;//trust me, it syncs up with the music on the first time
         Invoke("SpawnEnemy", 2f);
     }
 	
@@ -45,22 +45,31 @@ public class EnemySpawnerBehavior : MonoBehaviour {
         float newSpeed = Random.Range(0.05f, 0.2f);
         enemy.GetComponent<MummyBehavior>().setSpeed(newSpeed);
 
-
-        if (SpawnRate - 0.5 >= 1 && !highSpawnRateActive)
+        //to make the spawn rate act like a spring
+        //THIS IS REALLY WEIRD PLEASE DON'T TOUCH IT!
+        if (((SpawnRate - 0.5 >= 1 && sign < 0f) || (SpawnRate + 0.5f <= 6f && sign > 0f)) && !highSpawnRateActive)
         {
-            highSpawnRateTime = Time.time;
             SpawnRate = SpawnRate + sign*0.5f;
         }
-        else if (highSpawnRateActive && Time.time - highSpawnRateTime <= 20)
+        else if ((highSpawnRateActive && Time.time - highSpawnRateTime <= 10) && sign > 0)
         {
-            //SpawnRate; no change
+           //stay at low rate for 10 seconds
         }
-        else if (Time.time - highSpawnRateTime > 20)
+        else if ((highSpawnRateActive && Time.time - highSpawnRateTime <= 20) && sign < 0)
+        {
+            //stay at high rate for 20 seconds
+        }
+        else if (Time.time - highSpawnRateTime > 10 && highSpawnRateActive)
         {
             sign = -sign;
+            highSpawnRateActive = false;
+        }
+        else if ((SpawnRate == 1 || SpawnRate == 6) && !highSpawnRateActive)
+        {
+            highSpawnRateActive = true;
+            highSpawnRateTime = Time.time;
         }
         NextEnemySpawn(SpawnRate);
-        print(SpawnRate);
     }
 
     void NextEnemySpawn(float rate)

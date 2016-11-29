@@ -10,6 +10,8 @@ public class SarcBehavior : MonoBehaviour {
     float mummySpawnDelay;
     public GameObject Mummy;
     AudioSource audioSource;
+    AudioClip SarcSounds;
+    public AudioClip SarcHit;
 
     // Use this for initialization
     void Start () {
@@ -36,7 +38,6 @@ public class SarcBehavior : MonoBehaviour {
             float choice = Random.Range(0f, 1.0f);
             if (choice >= 0.4f)
             {
-                print("mummy spawned from sarc");
                 Vector3 pos = transform.position;
                 GameObject enemy = (GameObject)Instantiate(Mummy);
                 Mummy.transform.position = new Vector3(pos.x, -0.25f, pos.z);//the y layer for mummies
@@ -52,6 +53,7 @@ public class SarcBehavior : MonoBehaviour {
     public void TakeDamage(float dmg)
     {
         health -= dmg;
+        audioSource.PlayOneShot(SarcHit, 0.4f);
         FloatingTextController.CreateFloatingText((-dmg).ToString(), transform);
         if (health <= 0)
         {

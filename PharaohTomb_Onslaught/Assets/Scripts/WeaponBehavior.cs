@@ -65,7 +65,7 @@ public class WeaponBehavior : MonoBehaviour {
         Vector3 fwd = transform.TransformDirection(Vector3.left);
         Vector3 fwdL = Quaternion.AngleAxis(25, Vector3.up) * fwd;
         Vector3 fwdR = Quaternion.AngleAxis(25, Vector3.down) * fwd;
-        float range = 7.0f;
+        float range = 15.0f;
         RaycastHit hit;
         List<Ray> rayList = new List<Ray>();
         rayList.Add(new Ray(transform.position, fwd));
