@@ -45,15 +45,17 @@ public class WeaponBehavior : MonoBehaviour {
             int dmg = 3;
             if (hit.collider.name == "Tower")//shooting through the tower inscreases the damage
             {
-                print("Tower was shot through");
                 dmg *= 3;
                 ray = new Ray(new Vector3(0, 0, 0), fwd);//redraw ray from tower
                 Physics.Raycast(ray, out hit, range);
             }
-            if (hit.collider != null && hit.collider.tag == "Mummy")
+            if (hit.collider != null && (hit.collider.tag == "Mummy" || hit.collider.tag == "Sarc"))
             {
-                print("hit a Mummy");
-                hit.collider.gameObject.GetComponent<MummyBehavior>().TakeDamage(dmg);
+                //this is due in 3 days and there's no time to care anymore
+                if (hit.collider.tag == "Mummy")
+                    hit.collider.gameObject.GetComponent<MummyBehavior>().TakeDamage(dmg);
+                if (hit.collider.tag == "Sarc")
+                    hit.collider.gameObject.GetComponent<SarcBehavior>().TakeDamage(dmg);
             }
         }
     }
@@ -77,15 +79,16 @@ public class WeaponBehavior : MonoBehaviour {
                 float dmg = 1f;
                 if (hit.collider.name == "Tower")//shooting through the tower inscreases the damage
                 {
-                    print("Tower was shot through");
                     dmg *= 3;
                     Ray tempRay = new Ray(new Vector3(0, 0, 0), fwd);//redraw ray from tower
                     Physics.Raycast(tempRay, out hit, range);
                 }
-                if (hit.collider != null && hit.collider.tag == "Mummy")
+                if (hit.collider != null && (hit.collider.tag == "Mummy" || hit.collider.tag == "Sarc"))
                 {
-                    print("hit a Mummy");
-                    hit.collider.gameObject.GetComponent<MummyBehavior>().TakeDamage(dmg);
+                    if(hit.collider.tag == "Mummy")
+                        hit.collider.gameObject.GetComponent<MummyBehavior>().TakeDamage(dmg);
+                    if (hit.collider.tag == "Sarc")
+                        hit.collider.gameObject.GetComponent<SarcBehavior>().TakeDamage(dmg);
                 }
             }
         }

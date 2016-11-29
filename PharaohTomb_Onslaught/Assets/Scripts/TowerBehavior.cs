@@ -71,7 +71,7 @@ public class TowerBehavior : MonoBehaviour {
 
     void ReleaseCharge()
     {
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("w"))
         {
             if (isAtMaxCharge)
             {
