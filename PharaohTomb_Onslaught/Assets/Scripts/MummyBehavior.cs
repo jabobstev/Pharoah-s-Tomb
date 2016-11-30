@@ -13,8 +13,18 @@ public class MummyBehavior : MonoBehaviour {
     bool isDead;
     float deadTime;
 
-	void Start () {
+    AudioSource audioSource;
+    public AudioClip MummySounds1;
+    public AudioClip MummySounds2;
+    public AudioClip MummyHit1;
+    public AudioClip MummyHit2;
+    public AudioClip MummyHit3;
+    public AudioClip MummyHit4;
+    public AudioClip MummyDie;
+
+    void Start () {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         health = 12;
 
 		//Find the tower and remember its location
@@ -30,6 +40,14 @@ public class MummyBehavior : MonoBehaviour {
 		walkDirection = towerPosition - transform.position;
 		//Flatten it in 2D (xz plane)
 		walkDirection = new Vector3(walkDirection.x, 0, walkDirection.z);
+
+        //set up audio
+        float choice = Random.Range(0f, 1.0f);
+        if (choice < 0.5f)
+            audioSource.clip = MummySounds1;
+        else
+            audioSource.clip = MummySounds2;
+        audioSource.Play();
     }
 	
 	void Update () {
@@ -75,6 +93,7 @@ public class MummyBehavior : MonoBehaviour {
     {
         if (isDead)
             return;
+        PlayHitSound();
         FloatingTextController.CreateFloatingText((-dmg).ToString(), transform);
         health = health - dmg;
         if (health <= 0)
@@ -82,6 +101,7 @@ public class MummyBehavior : MonoBehaviour {
             //Destroy(gameObject);
             isDead = true;
             deadTime = Time.time;
+            audioSource.PlayOneShot(MummyDie, 0.6f);
             return;
         }
         animator.SetTrigger("isHit");
@@ -90,6 +110,19 @@ public class MummyBehavior : MonoBehaviour {
     public void setSpeed(float newSpeed)
     {
         moveSpeed = newSpeed;
+    }
+
+    void PlayHitSound()
+    {
+        int choice = (int)Random.Range(1f, 5f);
+        if (choice == 1)
+            audioSource.PlayOneShot(MummyHit1, 0.4f);
+        else if(choice == 2)
+            audioSource.PlayOneShot(MummyHit2, 0.4f);
+        else if (choice == 3)
+            audioSource.PlayOneShot(MummyHit3, 0.4f);
+        else
+            audioSource.PlayOneShot(MummyHit4, 0.4f);
     }
 
 }

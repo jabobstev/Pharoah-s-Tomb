@@ -10,6 +10,11 @@ public class WeaponBehavior : MonoBehaviour {
     public Sprite handgunSprite;
     public Sprite shotgunSprite;
 
+    AudioSource audioSource;
+    public AudioClip HandgunShot;
+    public AudioClip ShotgunShot;
+    public AudioClip WeaponSwitch;
+
     SpriteRenderer weaponSpriteRenderer;
 
     // Use this for initialization
@@ -17,6 +22,7 @@ public class WeaponBehavior : MonoBehaviour {
         isHandgun = true;
         isShotgun = false;
         weaponSpriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -34,6 +40,7 @@ public class WeaponBehavior : MonoBehaviour {
 
     void HandgunFire()
     {
+        audioSource.PlayOneShot(HandgunShot, 0.5f);
         //following this: http://answers.unity3d.com/questions/793987/get-component-in-raycasthit-game-object.html
         Vector3 fwd = transform.TransformDirection(Vector3.left);
         float range = 50.0f;
@@ -45,6 +52,7 @@ public class WeaponBehavior : MonoBehaviour {
             int dmg = 3;
             if (hit.collider.name == "Tower")//shooting through the tower inscreases the damage
             {
+                hit.collider.gameObject.GetComponent<TowerBehavior>().PowerShot();
                 dmg *= 3;
                 ray = new Ray(new Vector3(0, 0, 0), fwd);//redraw ray from tower
                 Physics.Raycast(ray, out hit, range);
@@ -62,6 +70,7 @@ public class WeaponBehavior : MonoBehaviour {
 
     void ShotgunFire()
     {
+        audioSource.PlayOneShot(ShotgunShot, 0.5f);
         Vector3 fwd = transform.TransformDirection(Vector3.left);
         Vector3 fwdL = Quaternion.AngleAxis(25, Vector3.up) * fwd;
         Vector3 fwdR = Quaternion.AngleAxis(25, Vector3.down) * fwd;
@@ -79,6 +88,7 @@ public class WeaponBehavior : MonoBehaviour {
                 float dmg = 1f;
                 if (hit.collider.name == "Tower")//shooting through the tower inscreases the damage
                 {
+                    hit.collider.gameObject.GetComponent<TowerBehavior>().PowerShot();
                     dmg *= 3;
                     Ray tempRay = new Ray(new Vector3(0, 0, 0), fwd);//redraw ray from tower
                     Physics.Raycast(tempRay, out hit, range);
@@ -98,6 +108,7 @@ public class WeaponBehavior : MonoBehaviour {
     {
         if (Input.GetKeyDown("s"))
         {
+            audioSource.PlayOneShot(WeaponSwitch, 2f);
             if (isShotgun)
             {
                 print("set to handgun");

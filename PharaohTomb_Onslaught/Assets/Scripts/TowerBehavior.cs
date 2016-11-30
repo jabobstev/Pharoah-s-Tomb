@@ -13,11 +13,16 @@ public class TowerBehavior : MonoBehaviour {
     const int MAX_CHARGE_POWER = 5;
     public bool isAtMaxCharge = false;
 
+    AudioSource audioSource;
+    public AudioClip ChargeLaunch;
+    public AudioClip PowerUpShot;
+
     float chargeUpdateTime;
 
     // Use this for initialization
     void Start () {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         health = 100;
         charge = 0;
         isDead = false;
@@ -75,6 +80,7 @@ public class TowerBehavior : MonoBehaviour {
         {
             if (isAtMaxCharge)
             {
+                audioSource.PlayOneShot(ChargeLaunch, 5f);
                 animator.SetTrigger("LaunchCharge");
                 isAtMaxCharge = false;
                 HitAllEnemies();
@@ -102,4 +108,11 @@ public class TowerBehavior : MonoBehaviour {
     {
         animator.SetBool("isAtMaxCharge", isAtMaxCharge);
     }
+
+    public void PowerShot()
+    {
+        animator.SetTrigger("PowerUpShot");
+        audioSource.PlayOneShot(PowerUpShot, 0.6f);
+    }
+
 }

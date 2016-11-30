@@ -47,7 +47,7 @@ public class EnemySpawnerBehavior : MonoBehaviour {
 
         //to make the spawn rate act like a spring
         //THIS IS REALLY WEIRD PLEASE DON'T TOUCH IT!
-        if (((SpawnRate - 0.5 >= 1 && sign < 0f) || (SpawnRate + 0.5f <= 6f && sign > 0f)) && !highSpawnRateActive)
+        if (((SpawnRate - 0.5 >= 1 && sign < 0f) || (SpawnRate + 0.5f <= 3f && sign > 0f)) && !highSpawnRateActive)
         {
             SpawnRate = SpawnRate + sign*0.5f;
         }
@@ -64,7 +64,7 @@ public class EnemySpawnerBehavior : MonoBehaviour {
             sign = -sign;
             highSpawnRateActive = false;
         }
-        else if ((SpawnRate == 1 || SpawnRate == 6) && !highSpawnRateActive)
+        else if ((SpawnRate == 1 || SpawnRate == 3) && !highSpawnRateActive)
         {
             highSpawnRateActive = true;
             highSpawnRateTime = Time.time;

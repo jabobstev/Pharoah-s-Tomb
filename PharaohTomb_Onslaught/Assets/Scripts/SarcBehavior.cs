@@ -10,7 +10,6 @@ public class SarcBehavior : MonoBehaviour {
     float mummySpawnDelay;
     public GameObject Mummy;
     AudioSource audioSource;
-    AudioClip SarcSounds;
     public AudioClip SarcHit;
 
     // Use this for initialization
@@ -20,6 +19,7 @@ public class SarcBehavior : MonoBehaviour {
         mummySpawnDelay = Time.time;
         EnemySpawnerBehavior.hasASarc = true;
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 3f;
     }
 	
 	// Update is called once per frame
@@ -53,7 +53,7 @@ public class SarcBehavior : MonoBehaviour {
     public void TakeDamage(float dmg)
     {
         health -= dmg;
-        audioSource.PlayOneShot(SarcHit, 0.4f);
+        audioSource.PlayOneShot(SarcHit, 1f);
         FloatingTextController.CreateFloatingText((-dmg).ToString(), transform);
         if (health <= 0)
         {
