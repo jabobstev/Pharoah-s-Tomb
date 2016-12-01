@@ -24,4 +24,10 @@ public class FloatingTextBehavior : MonoBehaviour {
     {
         damageText.text = text;
     }
+
+    public void SetColor(Color color, Color outline)
+    {
+        animator.GetComponent<Text>().color = color;
+        animator.GetComponent<Outline>().effectColor = outline;
+    }
 }

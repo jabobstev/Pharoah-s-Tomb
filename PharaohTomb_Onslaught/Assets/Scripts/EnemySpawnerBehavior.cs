@@ -29,6 +29,8 @@ public class EnemySpawnerBehavior : MonoBehaviour {
     public void Reset()
     {
         SpawnRate = 6f;
+        hasASarc = false;
+        highSpawnRateActive = false;
     }
 
     void SpawnEnemy()

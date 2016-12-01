@@ -54,7 +54,7 @@ public class SarcBehavior : MonoBehaviour {
     {
         health -= dmg;
         audioSource.PlayOneShot(SarcHit, 1f);
-        FloatingTextController.CreateFloatingText((-dmg).ToString(), transform);
+        GameObject.Find("FloatingText").GetComponent<FloatingTextController>().CreateFloatingText((-dmg).ToString(), transform);
         if (health <= 0)
         {
             isDead = true;

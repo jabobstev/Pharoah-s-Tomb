@@ -94,7 +94,7 @@ public class MummyBehavior : MonoBehaviour {
         if (isDead)
             return;
         PlayHitSound();
-        FloatingTextController.CreateFloatingText((-dmg).ToString(), transform);
+        GameObject.Find("FloatingText").GetComponent<FloatingTextController>().CreateFloatingText((-dmg).ToString(), transform);
         health = health - dmg;
         if (health <= 0)
         {

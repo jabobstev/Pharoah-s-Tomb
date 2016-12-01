@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManagerBehavior : MonoBehaviour {
     public PlayerBehavior player;
@@ -8,9 +9,13 @@ public class GameManagerBehavior : MonoBehaviour {
     public EnemySpawnerBehavior spawner;
     public static bool hasToReset = false;
     public static bool isGameOver = false;
+    public Text scoreDisplay;
+    public Text artefactDisplay;
+    private int score;
+    private float lastScoreTime;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Reset();
     }
 	
@@ -24,7 +29,20 @@ public class GameManagerBehavior : MonoBehaviour {
         {
             GameOver();
         }
-	}
+        scoreDisplay.text = score.ToString();
+        artefactDisplay.text = tower.health.ToString();
+        
+        if (Time.time - lastScoreTime > .350)
+        {
+            score += 10;
+            lastScoreTime = Time.time;
+        }
+    }
+
+    public void AddScore(int val)
+    {
+        score += val;
+    }
 
     public void Reset()
     {
@@ -33,9 +51,17 @@ public class GameManagerBehavior : MonoBehaviour {
         {
             Destroy(o.gameObject);
         }
+
+        objects = GameObject.FindGameObjectsWithTag("Sarc");
+        foreach (GameObject o in objects)
+        {
+            Destroy(o.gameObject);
+        }
         //player.Reset();
         spawner.Reset();
         tower.Reset();
+        score = 0;
+        lastScoreTime = Time.time;
         Time.timeScale = 1.0f;
         isGameOver = false;
         hasToReset = false;

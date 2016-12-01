@@ -3,25 +3,17 @@ using System.Collections;
 
 public class FloatingTextController : MonoBehaviour {
 
-    private static FloatingTextBehavior popupText;
-    private static GameObject canvas;
-    private static bool initialized = false;
+    public GameObject popupText;
+    public GameObject canvas;
 
-    public static void Initialize()
-    {
-        canvas = GameObject.Find("Canvas");
-        if (!popupText)
-            popupText = Resources.Load<FloatingTextBehavior>("Prefab/PopupTextParent");
-    }
-
-    public static void CreateFloatingText(string text, Transform location)
+    public void CreateFloatingText(string text, Transform location, Color? textColor = null, Color? outlineColor = null)
     {   
-        if (!initialized)
-            Initialize();   
-        FloatingTextBehavior instance = Instantiate(popupText);
+        GameObject instance = Instantiate(popupText);
+        FloatingTextBehavior ft = instance.GetComponent<FloatingTextBehavior>();
         Vector2 screenPos = Camera.main.WorldToScreenPoint(location.position);
-        instance.transform.SetParent(canvas.transform, false);
-        instance.transform.position = screenPos;
-        instance.SetText(text);
+        ft.transform.SetParent(canvas.transform, false);
+        ft.transform.position = screenPos;
+        ft.SetText(text);
+        ft.SetColor(textColor ?? new Color32(255, 185, 0, 255), outlineColor ?? new Color32(255, 124, 0, 255));
     }
 }

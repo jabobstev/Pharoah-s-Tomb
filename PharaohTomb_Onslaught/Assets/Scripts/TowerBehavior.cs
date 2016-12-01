@@ -9,7 +9,7 @@ public class TowerBehavior : MonoBehaviour {
     public int charge;
     public static bool isDead; //aka gameover flag
     public Light towerLight;
-    const float MAX_LIGHT_INTENSITY = 7f;
+    public float MAX_LIGHT_INTENSITY = 2f;
     const int MAX_CHARGE_POWER = 5;
     public bool isAtMaxCharge = false;
 
@@ -35,7 +35,7 @@ public class TowerBehavior : MonoBehaviour {
         BuildCharge();
         UpdateLight();
         ReleaseCharge();
-	}
+    }
 
     void OnTriggerEnter(Collider col)
     {
@@ -43,14 +43,16 @@ public class TowerBehavior : MonoBehaviour {
         if (col.gameObject.tag == "Mummy")
         {
 			TakeDamage (3);
-			//Debug.Log (health);
+            //Debug.Log (health);
         }
     }
 
 	void TakeDamage(int damage){
 		health -= damage;
-        if (health < 0)
+        GameObject.Find("FloatingText").GetComponent<FloatingTextController>().CreateFloatingText("x3", transform, new Color32(218, 15, 20, 255), new Color32(173, 43, 43, 255));
+        if (health <= 0)
         {
+            health = 0;
             isDead = true;
         }
 	}
@@ -112,6 +114,7 @@ public class TowerBehavior : MonoBehaviour {
     public void PowerShot()
     {
         animator.SetTrigger("PowerUpShot");
+        GameObject.Find("FloatingText").GetComponent<FloatingTextController>().CreateFloatingText("x3", transform, new Color32(105, 231, 0, 255), new Color32(45, 185, 0, 255));
         audioSource.PlayOneShot(PowerUpShot, 0.6f);
     }
 
